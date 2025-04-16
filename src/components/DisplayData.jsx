@@ -15,11 +15,13 @@ const DisplayData = () => {
     useEffect(() => {
         getUserData();
     }, [])
-
-    const searchedNames = users.filter((user) =>
+    
+    const searchedNames = useMemo(() => {
+        console.log("filter executed...");
+        return users.filter((user) =>
             user.name.toLowerCase().includes(searchName.toLowerCase())
         );
-    
+    }, [searchName]);
     
     console.log(searchedNames);
 
